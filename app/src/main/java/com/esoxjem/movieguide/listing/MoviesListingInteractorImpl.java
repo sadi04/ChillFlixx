@@ -34,7 +34,8 @@ class MoviesListingInteractorImpl implements MoviesListingInteractor {
         } else if (selectedOption == SortType.HIGHEST_RATED.getValue()) {
             return tmdbWebService.highestRatedMovies().map(MoviesWraper::getMovieList);
         } else {
-            return Observable.just(favoritesInteractor.getFavorites());
+            //return Observable.just(favoritesInteractor.getFavorites());
+            return tmdbWebService.search().map(MoviesWraper::getMovieList);
         }
     }
 

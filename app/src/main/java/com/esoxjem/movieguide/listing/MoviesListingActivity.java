@@ -3,25 +3,34 @@ package com.esoxjem.movieguide.listing;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.XmlRes;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
+import com.esoxjem.movieguide.ProfileActivity;
 import com.esoxjem.movieguide.R;
 import com.esoxjem.movieguide.Constants;
 import com.esoxjem.movieguide.details.MovieDetailsActivity;
 import com.esoxjem.movieguide.details.MovieDetailsFragment;
 import com.esoxjem.movieguide.Movie;
+import com.esoxjem.movieguide.explore.ExploreActivity;
+import com.esoxjem.movieguide.network.TmdbWebService;
 
 public class MoviesListingActivity extends AppCompatActivity implements MoviesListingFragment.Callback,NavigationView.OnNavigationItemSelectedListener
 {
     public static final String DETAILS_FRAGMENT = "DetailsFragment";
     private boolean twoPaneMode;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -46,6 +55,7 @@ public class MoviesListingActivity extends AppCompatActivity implements MoviesLi
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+
         if (findViewById(R.id.movie_details_container) != null)
         {
             twoPaneMode = true;
@@ -61,6 +71,7 @@ public class MoviesListingActivity extends AppCompatActivity implements MoviesLi
             twoPaneMode = false;
         }
     }
+
 
     @Override
     public void onBackPressed() {
@@ -89,6 +100,7 @@ public class MoviesListingActivity extends AppCompatActivity implements MoviesLi
         {
             // Do not load in single pane view
         }
+
     }
 
     @Override
@@ -126,6 +138,8 @@ public class MoviesListingActivity extends AppCompatActivity implements MoviesLi
 
         if (id == R.id.nav_profile) {
             // Handle the camera action
+           Intent profileIntent = new Intent(getApplicationContext(), ProfileActivity.class);
+           startActivity(profileIntent);
             }
         else if (id == R.id.nav_watched) {
 
@@ -135,7 +149,8 @@ public class MoviesListingActivity extends AppCompatActivity implements MoviesLi
         } else if (id == R.id.nav_settings) {
 
         } else if (id == R.id.nav_explore) {
-
+           Intent exploreIntent = new Intent(getApplicationContext(), ExploreActivity.class);
+           startActivity(exploreIntent);
         } else if (id == R.id.nav_logOut) {
 
         }

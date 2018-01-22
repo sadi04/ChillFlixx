@@ -21,6 +21,10 @@ public class ListingModule {
     }
 
     @Provides
+    SearchingInteractor provideSearchInteractor(String str, TmdbWebService tmdbWebService){
+        return new SearchingInteractor(str,tmdbWebService);
+    }
+    @Provides
     MoviesListingPresenter provideMovieListingPresenter(MoviesListingInteractor interactor) {
         return new MoviesListingPresenterImpl(interactor);
     }

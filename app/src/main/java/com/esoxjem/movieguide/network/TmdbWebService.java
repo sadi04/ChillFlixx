@@ -20,6 +20,12 @@ public interface TmdbWebService {
     @GET("3/discover/movie?vote_count.gte=500&language=en&sort_by=vote_average.desc")
     Observable<MoviesWraper> highestRatedMovies();
 
+    @GET("3/search/movie?query={movieName}")
+    Observable<MoviesWraper> search(@Path("movieName") String name);
+
+    @GET("3/search/movie?query=batman")
+    Observable<MoviesWraper> search();
+
     @GET("3/movie/{movieId}/videos")
     Observable<VideoWrapper> trailers(@Path("movieId") String movieId);
 

@@ -98,7 +98,7 @@ public class MoviesListingFragment extends Fragment implements MoviesListingView
 
     private void initLayoutReferences()
     {
-        moviesListing.setHasFixedSize(true);
+        moviesListing.setHasFixedSize(false);
 
         int columns;
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)

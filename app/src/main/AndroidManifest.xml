@@ -14,14 +14,23 @@
         <activity
             android:name=".LogIn_SignUp.LogInActivity"
             android:launchMode="singleTask">
+
+        </activity>
+        <activity
+            android:name=".listing.MoviesListingActivity"
+            android:parentActivityName=".listing.MoviesListingActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".listing.MoviesListingActivity"/>
         </activity>
         <activity
-            android:name=".listing.MoviesListingActivity"
+            android:name=".details.MovieDetailsActivity"
             android:parentActivityName=".listing.MoviesListingActivity"
             android:theme="@style/AppTheme">
             <meta-data
@@ -29,7 +38,15 @@
                 android:value=".listing.MoviesListingActivity"/>
         </activity>
         <activity
-            android:name=".details.MovieDetailsActivity"
+            android:name=".ProfileActivity"
+            android:parentActivityName=".listing.MoviesListingActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".listing.MoviesListingActivity"/>
+        </activity>
+        <activity
+            android:name=".explore.ExploreActivity"
             android:parentActivityName=".listing.MoviesListingActivity"
             android:theme="@style/AppTheme">
             <meta-data
